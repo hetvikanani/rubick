@@ -2,9 +2,9 @@ import styled from "styled-components";
 const DashboardStyle = styled.div`
 
 max-height: 100vh;
-overflow-y: auto;
+
 .displayDiv{
-    border:1px solid red;
+    width:100%;
     padding: 6em;
     margin-top: 3em;
 
@@ -13,13 +13,14 @@ overflow-y: auto;
     }
     .top-row-box {
         margin-top: 4em;
-    border:3px solid yellow;
+        width:100%;
+    
 
     .box{
         background: #ffffff;
         box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.2);
         border-radius: 14px;
-        border: 1px solid pink;
+       
         margin: 10px 0 0 10px;
 
         // .ant-card-body {
@@ -38,4 +39,4 @@ overflow-y: auto;
 }
 
 `;
-export default DashboardStyle; 
+export default DashboardStyle;

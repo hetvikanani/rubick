@@ -1,39 +1,33 @@
-import React, { Component } from 'react'
-import  DashboardStyle  from "./style";
+import React, { Component } from "react";
+import DashboardStyle from "./style";
 import { TopRowValue } from "./constant";
-import { Row, Col, Card} from 'antd';
-
-
-
+import { Row, Col } from "antd";
+import Card from "../../Components/shared/Card";
 
 export default class Dashboard extends Component {
-    topRowUi = () => {
-        try {
-          return TopRowValue.map((a, i) => (
-            <Col xs={24} sm={12} md={12} lg={8} xl={8} key={i} style={{border:"1px solid green"}}>
-
-           <Card className="box">
-           <h1>dfgmkdfg</h1>
-          
-          </Card>
-            </Col>
-          ));
-        } catch (error) {
-          console.log(error);
-        }
-      };
-    render() {
-        return (
-            <Row> 
-                 <Col xs={24} sm={14} md={16} lg={18} xl={19} >
-                    <DashboardStyle>
-                    <div className="displayDiv">
-                    <h2 className="title">General Report</h2>
-                    <Row className="top-row-box">{this.topRowUi()}</Row>
-                    </div>
-                    </DashboardStyle>
-                 </Col>
-            </Row>
-        )
+  topRowUi = () => {
+    try {
+      return TopRowValue.map((data, i) => (
+        <Col span={6} xs={24} sm={12} md={12} lg={6} xl={6} key={i}>
+          <Card data={data}/>
+        </Col>
+      ));
+    } catch (error) {
+      console.log(error);
     }
+  };
+  render() {
+    return (
+      <DashboardStyle>
+        <div className="displayDiv">
+          <h2 className="title">General Report</h2>
+          <Row className="top-row-box">
+            {/* <div className="site-card-border-less-wrapper"> */}
+            {this.topRowUi()}
+            {/* </div> */}
+          </Row>
+        </div>
+      </DashboardStyle>
+    );
+  }
 }
