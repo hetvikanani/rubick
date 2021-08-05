@@ -1,7 +1,7 @@
 const TopRowValue = [
-  { value: "4.710", name: "Item Sales", per: 33 },
-  { value: "3.721", name: "Item Sales", per: 33 },
-  { value: "2.149", name: "Item Sales", per: 33 },
-  { value: "152.040", name: "Item Sales", per: 53 },
+  { value: "15", name: "Active license", per: 33 },
+  { value: "950", name: "Wallet Balance", per: 2 },
+  { value: "10", name: "Active leads", per: 12 },
+  { value: "50", name: "Total customer", per: 22 },
 ];
 export { TopRowValue };

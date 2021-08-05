@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { size } from "App/device";
+import { Theme } from "App/theme";
 
-
-const InputWrapper = styled.div`
+const FormWrapper = styled.div`
   padding: 0;
   margin: 0;
   position: relative;
@@ -18,7 +19,6 @@ const InputWrapper = styled.div`
   .ant-input-prefix {
     margin-right: 5px;
   }
-  
   .ant-input-suffix {
     padding: 0 5px;
     border-radius: 0 0 5px 0;
@@ -30,24 +30,48 @@ const InputWrapper = styled.div`
     margin: 0;
     -webkit-appearance: none;
     background: #fff;
-    border: 1px solid rgb(226, 232, 240);
+    border: 0;
     height: 34px;
     font-size: 15px;
     font-weight: 300;
     padding: 0 30px;
     color: #b5b5b5;
     border-radius: 5px;
- 
-    
-   
+    ::placeholder {
+      color: #b5b5b5;
+    }
+    :-ms-input-placeholder {
+      color: #b5b5b5;
+    }
+    ::-ms-input-placeholder {
+      color: #b5b5b5;
+    }
+    :hover,
+    :focus {
+      outline: none;
+    }
+    @media ${size["desktop-sm-max"]} {
+      font-size: 13px;
+      padding: 5px 10px;
+    }
+    @media ${size["tablet-max"]} {
+      font-size: 14px;
+    }
   }
   .empty {
-    border: 1px solid #e81c1c;
+    border: 1px solid #E81C1C;
   }
-  .error{
-    border:1px solid red;
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
-   
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  .ant-input-affix-wrapper > input.ant-input {
+    padding: 0 10px;
+  }
 `;
 
-export { InputWrapper };
+export { FormWrapper };

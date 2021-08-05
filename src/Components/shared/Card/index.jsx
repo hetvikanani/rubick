@@ -1,18 +1,26 @@
 import React, { Component } from "react";
 import { Card } from "antd";
 import Header from "./Header";
+import { CardStyle } from "./style";
 
 class CardDashboard extends Component {
   render() {
     const { value, per, name } = this.props.data;
     return (
-      <Card hoverable style={{ width: 200 }}>
-        <Header per={per} />
-        <div style={{ textAlign: "left", marginTop:"1rem" }}>
-          <div>{value}</div>
-          <div>{name}</div>
-        </div>
-      </Card>
+      <CardStyle>
+        
+        <Card className="reportBox zoomIn">
+        <Card className="card">
+          <Header per={per} />
+          <div>
+            <h1 className="head">{value}</h1>
+            <div className="tag">{name}</div>
+          </div>
+          </Card>
+        </Card>
+         
+        
+      </CardStyle>
     );
   }
 }

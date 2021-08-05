@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Input } from "antd";
 
-import { InputWrapper } from "./style";
+import { FormWrapper } from "./style";
 const { TextArea } = Input;
 class FormInput extends Component {
+  
   render() {
     const {
       handleChange,
@@ -17,7 +18,7 @@ class FormInput extends Component {
     } = this.props;
     let length = max ? max : 45;
     return (
-      <InputWrapper className={formClass ? formClass : ""}>
+      <FormWrapper className={formClass ? formClass : ""}>
         {row ? (
           <TextArea
             rows={row}
@@ -30,7 +31,7 @@ class FormInput extends Component {
           <Input.Password
             size={size}
             onChange={handleChange}
-            className={className}
+            className={`form-control ${className}`}
             autoComplete="off"
             maxLength={length}
             {...props}
@@ -39,12 +40,12 @@ class FormInput extends Component {
           <Input
             size={size}
             onChange={handleChange}
-            className={className}
+            className={`form-control ${className}`}
             maxLength={length}
             {...props}
           />
         )}
-      </InputWrapper>
+      </FormWrapper>
     );
   }
 }
