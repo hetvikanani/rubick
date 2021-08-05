@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { size } from "App/device";
-import { Theme } from "App/theme";
+// import { size } from "App/device";
+// import { Theme } from "App/theme";
 
 const FormWrapper = styled.div`
   padding: 0;
@@ -50,16 +50,9 @@ const FormWrapper = styled.div`
     :focus {
       outline: none;
     }
-    @media ${size["desktop-sm-max"]} {
-      font-size: 13px;
-      padding: 5px 10px;
-    }
-    @media ${size["tablet-max"]} {
-      font-size: 14px;
-    }
   }
   .empty {
-    border: 1px solid #E81C1C;
+    border: 1px solid #e81c1c;
   }
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {

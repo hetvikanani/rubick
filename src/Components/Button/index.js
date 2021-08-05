@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Button } from "./style";
-import { Theme } from "App/theme";
+// import { Theme } from "App/theme";
 
 const ButtonConstant = {
-  primary: { background: Theme.mainColor, color: "#fff" },
-  secondary: { background: "#e2e2e2", color: Theme.mainColor },
+  primary: { background: "orange", color: "#fff" },
+  secondary: { background: "#e2e2e2", color: "orange" },
   answer: { background: "green", color: "#fff" },
   decline: { background: "red", color: "#fff" },
 };

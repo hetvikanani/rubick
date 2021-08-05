@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { size } from "App/device";
-import { Theme } from "App/theme";
+// import { size } from "App/device";
+// import { Theme } from "App/theme";
 const Button = styled.button`
   background: ${(props) => props.bgcolor.background};
   color: ${(props) => props.bgcolor.color};
@@ -19,17 +19,6 @@ const Button = styled.button`
   font-weight: bold;
   border-radius: 5px;
   transition: all 0.4s ease;
-  :hover,
-  :focus {
-    color: #fff;
-    background: ${Theme.baseColor};
-    outline: none;
-  }
-  @media ${size["desktop-sm-max"]} {
-    height: 38px;
-    line-height: 38px;
-    font-size: 14px;
-  }
 `;
 
 export { Button };
