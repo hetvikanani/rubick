@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import RequestStyle from "./style";
-import { Label, Input, Select, Button } from "../../Components/Form";
+import { Label, Input, Button, Select } from "../../Components/Form";
 import { Col, Row, Checkbox } from "antd";
 import { PlusCircleOutlined, MinusCircleOutlined } from "@ant-design/icons";
 import { Formik, Form } from "formik";
@@ -25,6 +25,8 @@ class Request extends Component {
     super();
     this.state = {
       count: 1,
+      from: "",
+      to: "",
 
       initState: {
         floor: "",
@@ -51,6 +53,18 @@ class Request extends Component {
   }
 
   render() {
+    let from = [];
+    let to = [];
+
+    if (this.state.from)
+      from = this.props.floor
+        .filter((gmete) => gmete.floorname === this.state.from)[0]
+        .locations.map((gmete) => gmete.location);
+    if (this.state.to)
+      to = this.props.floor
+        .filter((gmete) => gmete.floorname === this.state.to)[0]
+        .locations.map((gmete) => gmete.location);
+
     const { initState } = this.state;
     return (
       <RequestStyle>
@@ -78,8 +92,14 @@ class Request extends Component {
                 <div className="pick">
                   <Label title="PickUp" className="label"></Label>
                   <div>
+                    {/* <Select>
+                      {this.props.floor &&
+                        this.props.floor.map((gmete) => (
+                          <Select.Option>{gmete.floorname}</Select.Option>
+                        ))}
+                    </Select> */}
                     <Select
-                      data={floor}
+                      data={this.props.floor.map((gmete) => gmete.floorname)}
                       placeholder="Floor"
                       className="floorSelect"
                       selectClass={
@@ -88,15 +108,17 @@ class Request extends Component {
                       name="floor"
                       value={values.floor}
                       onChange={(value) => {
+                        this.setState({ from: value });
                         setFieldValue("floor", value);
                         setFieldValue("Location", " ");
+                        console.log(value);
                       }}
                     />
                   </div>
 
                   <div>
                     <Select
-                      data={location}
+                      data={from}
                       placeholder="Location"
                       className="locationSelect"
                       selectClass={
@@ -121,7 +143,7 @@ class Request extends Component {
                   </div>
                   <div>
                     <Select
-                      data={floor}
+                      data={this.props.floor.map((gmete) => gmete.floorname)}
                       placeholder="Floor"
                       className="locationSelect"
                       selectClass={
@@ -131,12 +153,15 @@ class Request extends Component {
                       }
                       name="floor1"
                       value={values.floor1}
-                      onChange={(value) => setFieldValue("floor1", value)}
+                      onChange={(value) => {
+                        this.setState({ to: value });
+                        setFieldValue("floor1", value);
+                      }}
                     />
                   </div>
                   <div>
                     <Select
-                      data={location}
+                      data={to}
                       placeholder="Location"
                       className="locationSelect"
                       selectClass={
@@ -191,10 +216,10 @@ class Request extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  loading: state.Request.loading,
-  message: state.Request.message,
-  error: state.Request.error,
-  floor: state.Request.floor,
+  loading: state.request.loading,
+  message: state.request.message,
+  error: state.request.error,
+  floor: state.request.floor,
 });
 
 const mapStateToDispatch = (dispatch) => ({
@@ -203,6 +228,4 @@ const mapStateToDispatch = (dispatch) => ({
   },
 });
 
-export default withRouter(
-  connect(mapStateToProps, mapStateToDispatch)(Request)
-);
+export default connect(mapStateToProps, mapStateToDispatch)(Request);
