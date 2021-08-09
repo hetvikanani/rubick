@@ -41,7 +41,7 @@ class FormInput extends Component {
             size={size}
             onChange={handleChange}
             className={`form-control ${className}`}
-            maxLength={length}
+            maxLength={length} 
             {...props}
           />
         )}

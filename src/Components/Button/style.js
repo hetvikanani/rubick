@@ -10,8 +10,8 @@ const Button = styled.button`
   font-family: "Rubik", sans-serif;
   position: relative;
   padding: 0 20px;
-  height: 50px;
-  line-height: 50px;
+  height: 43px;
+  line-height: 36px;
   min-width: 130px;
   letter-spacing: 0;
   font-size: 15px;

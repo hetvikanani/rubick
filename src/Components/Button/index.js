@@ -26,7 +26,7 @@ class FormButton extends Component {
   }
 }
 FormButton.defaultProps = {
-  text: "Button",
+  children: "Button",
   color: "primary",
   htmlType: "button",
   className: "",
