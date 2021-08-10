@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import RequestStyle from "./style";
+<<<<<<< HEAD
 import { Label, Input, Select, Button,Check } from "../../Components/Form";
 import { Col, Row} from "antd";
+=======
+import { Label, Input, Button, Select } from "../../Components/Form";
+import { Col, Row, Checkbox } from "antd";
+>>>>>>> a85389e84a78e42b3cfaa918fd939b73608ca7b2
 import { PlusCircleOutlined, MinusCircleOutlined } from "@ant-design/icons";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -24,8 +29,13 @@ class Request extends Component {
     super();
     this.state = {
       count: 1,
+<<<<<<< HEAD
       storefloor: "",
       storelocation: "",
+=======
+      from: "",
+      to: "",
+>>>>>>> a85389e84a78e42b3cfaa918fd939b73608ca7b2
 
       initState: {
         floor: "",
@@ -56,7 +66,22 @@ class Request extends Component {
 
 
   render() {
+<<<<<<< HEAD
     console.log("floor", this.props.floor);
+=======
+    let from = [];
+    let to = [];
+
+    if (this.state.from)
+      from = this.props.floor
+        .filter((gmete) => gmete.floorname === this.state.from)[0]
+        .locations.map((gmete) => gmete.location);
+    if (this.state.to)
+      to = this.props.floor
+        .filter((gmete) => gmete.floorname === this.state.to)[0]
+        .locations.map((gmete) => gmete.location);
+
+>>>>>>> a85389e84a78e42b3cfaa918fd939b73608ca7b2
     const { initState } = this.state;
     return (
       <RequestStyle>
@@ -84,8 +109,18 @@ class Request extends Component {
                 <div className="pick">
                   <Label title="PickUp" className="label"></Label>
                   <div>
+                    {/* <Select>
+                      {this.props.floor &&
+                        this.props.floor.map((gmete) => (
+                          <Select.Option>{gmete.floorname}</Select.Option>
+                        ))}
+                    </Select> */}
                     <Select
+<<<<<<< HEAD
                       data={this.props.floor.map((g) => g.floorname)}
+=======
+                      data={this.props.floor.map((gmete) => gmete.floorname)}
+>>>>>>> a85389e84a78e42b3cfaa918fd939b73608ca7b2
                       placeholder="Floor"
                       className="floorSelect"
                       selectClass={
@@ -94,16 +129,22 @@ class Request extends Component {
                       name="floor"
                       value={values.floor}
                       onChange={(value) => {
+                        this.setState({ from: value });
                         setFieldValue("floor", value);
                         setFieldValue("Location", " ");
+<<<<<<< HEAD
                         console.log("onchange value and id", value);
                         this.setState({ storefloor: value });
+=======
+                        console.log(value);
+>>>>>>> a85389e84a78e42b3cfaa918fd939b73608ca7b2
                       }}
                     />
                   </div>
 
                   <div>
                     <Select
+<<<<<<< HEAD
                       data={
                         this.props.floor.filter(
                           (g) => g.floorname === this.state.storefloor
@@ -114,6 +155,9 @@ class Request extends Component {
                           )[0]
                           .locations.map((g) => g.location)
                       }
+=======
+                      data={from}
+>>>>>>> a85389e84a78e42b3cfaa918fd939b73608ca7b2
                       placeholder="Location"
                       className="locationSelect"
                       selectClass={
@@ -138,7 +182,11 @@ class Request extends Component {
                   </div>
                   <div>
                     <Select
+<<<<<<< HEAD
                       data={this.props.floor.map((g) => g.floorname)}
+=======
+                      data={this.props.floor.map((gmete) => gmete.floorname)}
+>>>>>>> a85389e84a78e42b3cfaa918fd939b73608ca7b2
                       placeholder="Floor"
                       className="locationSelect"
                       selectClass={
@@ -149,15 +197,21 @@ class Request extends Component {
                       name="floor1"
                       value={values.floor1}
                       onChange={(value) => {
+<<<<<<< HEAD
                         setFieldValue("floor1", value);
                         setFieldValue("Location1", " ");
                         console.log("onchange value", value);
                         this.setState({ storelocation: value });
+=======
+                        this.setState({ to: value });
+                        setFieldValue("floor1", value);
+>>>>>>> a85389e84a78e42b3cfaa918fd939b73608ca7b2
                       }}
                     />
                   </div>
                   <div>
                     <Select
+<<<<<<< HEAD
                       data={
                         this.props.floor.filter(
                           (g) => g.floorname === this.state.storelocation
@@ -168,6 +222,9 @@ class Request extends Component {
                           )[0]
                           .locations.map((g) => g.location)
                       }
+=======
+                      data={to}
+>>>>>>> a85389e84a78e42b3cfaa918fd939b73608ca7b2
                       placeholder="Location"
                       className="locationSelect"
                       selectClass={
