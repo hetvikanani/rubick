@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import RequestStyle from "./style";
-import { Label, Input, Select, Button,Check } from "../../Components/Form";
-import { Col, Row} from "antd";
+import { Label, Input, Select, Button, Check } from "../../Components/Form";
+import { Col, Row } from "antd";
 import { PlusCircleOutlined, MinusCircleOutlined } from "@ant-design/icons";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -16,7 +16,6 @@ const ValidationSchema = Yup.object().shape({
   location1: Yup.string().trim().required(" "),
 });
 
-
 const to = ["ramn", "ishita", "ruhi"];
 
 class Request extends Component {
@@ -26,16 +25,17 @@ class Request extends Component {
       count: 1,
       storefloor: "",
       storelocation: "",
+      myData: [],
 
       initState: {
         floor: "",
         location: "",
         floor1: "",
         location1: "",
-        floorId:0,
-        locationId:0,
-        floor1Id:0,
-        location1Id:0,
+        floorId: 0,
+        locationId: 0,
+        floor1Id: 0,
+        location1Id: 0,
       },
     };
   }
@@ -46,6 +46,27 @@ class Request extends Component {
       console.log(error);
     }
   }
+
+  componentDidUpdate() {
+    if (
+      this.props.floor &&
+      this.props.floor.length > 0 &&
+      this.state.myData.length === 0
+    ) {
+      const data = this.props.floor.map((g) => ({
+        ...g,
+        id: g.floorid,
+        value: g.floorname,
+        locations: g.locations.map((x) => ({
+          ...x,
+          id: x.locationid,
+          value: x.location,
+        })),
+      }));
+      this.setState({ myData: data });
+      console.log(data, "data");
+    }
+  }
   handleSubmit = () => {};
 
   onChange = (val) => {
@@ -53,10 +74,15 @@ class Request extends Component {
     this.setState({ count: val ? count + 1 : count !== 1 ? count - 1 : count });
   };
 
-
-
   render() {
-    console.log("floor", this.props.floor);
+    console.log(
+      "floor",
+      this.props.floor,
+      this.state.floorId,
+      this.state.locationId,
+      this.state.floor1Id,
+      this.state.location1Id
+    );
     const { initState } = this.state;
     return (
       <RequestStyle>
@@ -91,20 +117,21 @@ class Request extends Component {
                         ))}
                     </Select> */}
                     <Select
-                      data={this.props.floor.map((g) => g.floorname)}
+                      data={this.state.myData}
                       placeholder="Floor"
                       className="floorSelect"
+                      withID
                       selectClass={
                         errors.floor && touched.floor ? "empty" : "floorSelect"
                       }
                       name="floor"
                       value={values.floor}
-                      onChange={(value) => {
+                      onChange={(value, data) => {
                         this.setState({ from: value });
                         setFieldValue("floor", value);
                         setFieldValue("Location", " ");
-                        console.log("onchange value and id", value);
-                        this.setState({ storefloor: value });
+                        console.log("onchange value and id", value, data);
+                        this.setState({ storefloor: value, floorId: data.id });
                       }}
                     />
                   </div>
@@ -112,17 +139,16 @@ class Request extends Component {
                   <div>
                     <Select
                       data={
-                        this.props.floor.filter(
+                        this.state.myData.filter(
                           (g) => g.floorname === this.state.storefloor
                         )[0] &&
-                        this.props.floor
-                          .filter(
-                            (g) => g.floorname === this.state.storefloor
-                          )[0]
-                          .locations.map((g) => g.location)
+                        this.state.myData.filter(
+                          (g) => g.floorname === this.state.storefloor
+                        )[0].locations
                       }
                       placeholder="Location"
                       className="locationSelect"
+                      withID
                       selectClass={
                         errors.location && touched.location
                           ? "empty"
@@ -130,7 +156,10 @@ class Request extends Component {
                       }
                       name="location"
                       value={values.location}
-                      onChange={(value) => setFieldValue("location", value)}
+                      onChange={(value, data) => {
+                        setFieldValue("location", value);
+                        this.setState({ locationId: data.id });
+                      }}
                     />
                   </div>
                 </div>
@@ -145,9 +174,10 @@ class Request extends Component {
                   </div>
                   <div>
                     <Select
-                      data={this.props.floor.map((g) => g.floorname)}
+                      data={this.state.myData}
                       placeholder="Floor"
                       className="locationSelect"
+                      withID
                       selectClass={
                         errors.floor1 && touched.floor1
                           ? "empty"
@@ -155,28 +185,30 @@ class Request extends Component {
                       }
                       name="floor1"
                       value={values.floor1}
-                      onChange={(value) => {
+                      onChange={(value, data) => {
                         setFieldValue("floor1", value);
                         setFieldValue("Location1", " ");
-                        console.log("onchange value", value);
-                        this.setState({ storelocation: value });
+                        console.log("onchange value", value, data);
+                        this.setState({
+                          storelocation: value,
+                          floor1Id: data.id,
+                        });
                       }}
                     />
                   </div>
                   <div>
                     <Select
                       data={
-                        this.props.floor.filter(
+                        this.state.myData.filter(
                           (g) => g.floorname === this.state.storelocation
                         )[0] &&
-                        this.props.floor
-                          .filter(
-                            (g) => g.floorname === this.state.storelocation
-                          )[0]
-                          .locations.map((g) => g.location)
+                        this.state.myData.filter(
+                          (g) => g.floorname === this.state.storelocation
+                        )[0].locations
                       }
                       placeholder="Location"
                       className="locationSelect"
+                      withID
                       selectClass={
                         errors.location1 && touched.location1
                           ? "empty"
@@ -184,7 +216,10 @@ class Request extends Component {
                       }
                       name="location1"
                       value={values.location1}
-                      onChange={(value) => setFieldValue("location1", value)}
+                      onChange={(value, data) => {
+                        setFieldValue("location1", value);
+                        this.setState({ location1Id: data.id });
+                      }}
                     />
                   </div>
                 </div>
@@ -208,8 +243,8 @@ class Request extends Component {
                     </Col>
                     <Col className="priorityCol">
                       <Label title="Priority" className="priority"></Label>
-                      
-                      <Check/>
+
+                      <Check />
                     </Col>
                   </Row>
                 </div>
