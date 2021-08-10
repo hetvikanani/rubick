@@ -16,6 +16,7 @@ export const getFloorList = (id) => async (dispatch) => {
         error: "Network Error",
       });
     }
+    console.log('response',response);
   } catch (error) {
     dispatch({
       type: actions.GET_FLOOR_LIST_ERROR,
