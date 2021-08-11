@@ -1,7 +1,11 @@
 import axios from "axios";
 import store from "../../Redux/store";
 import { configVar } from "../config";
-import { errorHandler, errorEmpty, redirectLogin } from "../../Redux/app/actions";
+import {
+  errorHandler,
+  errorEmpty,
+  redirectLogin,
+} from "../../Redux/app/actions";
 import { getAuthToken } from "../helper";
 import { logout } from "../../Redux/login/actions";
 
