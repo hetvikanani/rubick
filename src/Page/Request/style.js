@@ -29,12 +29,15 @@ const RequestStyle = styled.div`
   }
 
   .floorSelect{
-    margin:-5px;
+    margin-bottom:13px;
   }
-  .locationSelect{
-    margin-top: 19px;
-    margin-left: -6px;
-  }
+
+.floor1Select{
+    margin-bottom:13px;
+}
+.toSelect{
+    margin-bottom:13px;
+}
 
   .proters{
     font-size:22px;

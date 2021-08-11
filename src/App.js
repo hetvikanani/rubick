@@ -1,6 +1,6 @@
 import "./App.css";
 
-import Request from "./Page/Request/index";
+import Floor from "./Page/Floor/index";
 import "antd/dist/antd.css";
 
 import { Provider } from "react-redux";
@@ -10,8 +10,7 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-      
-        <Request />
+      <Floor/>
       </div>
     </Provider>
   );
@@ -19,12 +18,12 @@ function App() {
 
 export default App;
 
-
+// import Request from "./Page/Request/index";
 // import Dashboard from './Page/Dashboard';
 // import Login from './Page/Login/index';
 // import KdEmployee from './Page/KD/index';
 
-
+{/* <Request /> */}
   {/* <Login/> */}
   {/* <Dashboard/> */}
   {/* <KdEmployee/> */}

@@ -1,18 +1,13 @@
 import React, { Component } from "react";
 import RequestStyle from "./style";
-<<<<<<< HEAD
-import { Label, Input, Select, Button,Check } from "../../Components/Form";
-import { Col, Row} from "antd";
-=======
 import { Label, Input, Select, Button, Check } from "../../Components/Form";
 import { Col, Row } from "antd";
->>>>>>> bb34255e8a2bebb3f88ecf1cda8117836163dfb2
 import { PlusCircleOutlined, MinusCircleOutlined } from "@ant-design/icons";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
-import { getFloorList } from "../../Redux/Request/action";
+import { getEmployee, getFloorList } from "../../Redux/Request/action";
 
 const ValidationSchema = Yup.object().shape({
   floor: Yup.string().trim().required(" "),
@@ -21,7 +16,7 @@ const ValidationSchema = Yup.object().shape({
   location1: Yup.string().trim().required(" "),
 });
 
-const to = ["ramn", "ishita", "ruhi"];
+
 
 class Request extends Component {
   constructor() {
@@ -30,10 +25,8 @@ class Request extends Component {
       count: 1,
       storefloor: "",
       storelocation: "",
-<<<<<<< HEAD
-=======
       myData: [],
->>>>>>> bb34255e8a2bebb3f88ecf1cda8117836163dfb2
+      priority: false,
 
       initState: {
         floor: "",
@@ -44,12 +37,14 @@ class Request extends Component {
         locationId: 0,
         floor1Id: 0,
         location1Id: 0,
+        employee:"",
       },
     };
   }
   async componentDidMount() {
     try {
       await this.props.getFloorList();
+      await this.props.getEmployee();
     } catch (error) {
       console.log(error);
     }
@@ -75,26 +70,33 @@ class Request extends Component {
       console.log(data, "data");
     }
   }
-  handleSubmit = () => {};
+  handleSubmit = (value) => {
+    console.log("pickup floor is",value.floor,"pickup location is",value.location)
+    console.log("destination floor is",value.floor1,"destination location is",value.location1)
+
+    console.log("checkbox is:",this.state.priority,"employee name is",value.employee)
+  };
 
   onChange = (val) => {
     const { count } = this.state;
     this.setState({ count: val ? count + 1 : count !== 1 ? count - 1 : count });
   };
 
+  // check = (e) => {
+  //  this.setState({ priority: !this.state.priority });
+  // };
+
   render() {
-<<<<<<< HEAD
-    console.log("floor", this.props.floor);
-=======
-    console.log(
-      "floor",
-      this.props.floor,
-      this.state.floorId,
-      this.state.locationId,
-      this.state.floor1Id,
-      this.state.location1Id
-    );
->>>>>>> bb34255e8a2bebb3f88ecf1cda8117836163dfb2
+    // console.log(
+    //   "floor kro",
+    //   // this.props.floor,
+    //   // this.state.floorId,
+    //   // this.state.locationId,
+    //   // this.state.floor1Id,
+    //   // this.state.location1Id,
+    //   // this.state.priority
+    // );
+    // console.log("checkbox is:", this.state.priority);
     const { initState } = this.state;
     return (
       <RequestStyle>
@@ -123,11 +125,7 @@ class Request extends Component {
                   <Label title="PickUp" className="label"></Label>
                   <div>
                     <Select
-<<<<<<< HEAD
-                      data={this.props.floor.map((g) => g.floorname)}
-=======
                       data={this.state.myData}
->>>>>>> bb34255e8a2bebb3f88ecf1cda8117836163dfb2
                       placeholder="Floor"
                       className="floorSelect"
                       withID
@@ -136,20 +134,12 @@ class Request extends Component {
                       }
                       name="floor"
                       value={values.floor}
-<<<<<<< HEAD
-                      onChange={(value) => {
-                        setFieldValue("floor", value);
-                        setFieldValue("Location", " ");
-                        console.log("onchange value and id", value);
-                        this.setState({ storefloor: value });
-=======
                       onChange={(value, data) => {
                         this.setState({ from: value });
                         setFieldValue("floor", value);
                         setFieldValue("Location", " ");
-                        console.log("onchange value and id", value, data);
+                        console.log("pickup floor  is", value);
                         this.setState({ storefloor: value, floorId: data.id });
->>>>>>> bb34255e8a2bebb3f88ecf1cda8117836163dfb2
                       }}
                     />
                   </div>
@@ -177,6 +167,7 @@ class Request extends Component {
                       onChange={(value, data) => {
                         setFieldValue("location", value);
                         this.setState({ locationId: data.id });
+                       
                       }}
                     />
                   </div>
@@ -185,44 +176,37 @@ class Request extends Component {
                   <Label title="Destination" className="label"></Label>
                   <div>
                     <Select
-                      data={to}
+                      data={this.props.employees.map((g) => g.name)}
                       placeholder="To"
-                      className="floorSelect"
+                      className="toSelect"
+                      name="employee"
+                      value={values.employee}
+                      onChange={(value,data)=>{
+                        setFieldValue("employee",value);
+                      }}
                     />
                   </div>
                   <div>
                     <Select
-<<<<<<< HEAD
-                      data={this.props.floor.map((g) => g.floorname)}
-=======
                       data={this.state.myData}
->>>>>>> bb34255e8a2bebb3f88ecf1cda8117836163dfb2
                       placeholder="Floor"
-                      className="locationSelect"
+                      className="floor1Select"
                       withID
                       selectClass={
                         errors.floor1 && touched.floor1
                           ? "empty"
-                          : "locationSelect"
+                          : "floor1Select"
                       }
                       name="floor1"
                       value={values.floor1}
-<<<<<<< HEAD
-                      onChange={(value) => {
-                        setFieldValue("floor1", value);
-                        setFieldValue("Location1", " ");
-                        console.log("onchange value", value);
-                        this.setState({ storelocation: value });
-=======
                       onChange={(value, data) => {
                         setFieldValue("floor1", value);
                         setFieldValue("Location1", " ");
-                        console.log("onchange value", value, data);
+                     
                         this.setState({
                           storelocation: value,
                           floor1Id: data.id,
                         });
->>>>>>> bb34255e8a2bebb3f88ecf1cda8117836163dfb2
                       }}
                     />
                   </div>
@@ -237,18 +221,19 @@ class Request extends Component {
                         )[0].locations
                       }
                       placeholder="Location"
-                      className="locationSelect"
+                      className="location1Select"
                       withID
                       selectClass={
                         errors.location1 && touched.location1
                           ? "empty"
-                          : "locationSelect"
+                          : "location1Select"
                       }
                       name="location1"
                       value={values.location1}
                       onChange={(value, data) => {
                         setFieldValue("location1", value);
                         this.setState({ location1Id: data.id });
+                        console.log("destination location is", value);
                       }}
                     />
                   </div>
@@ -274,7 +259,11 @@ class Request extends Component {
                     <Col className="priorityCol">
                       <Label title="Priority" className="priority"></Label>
 
-                      <Check />
+                      <Check
+                        onChange={() =>
+                          this.setState({ priority: !this.state.priority })
+                        }
+                      />
                     </Col>
                   </Row>
                 </div>
@@ -299,11 +288,15 @@ const mapStateToProps = (state) => ({
   message: state.request.message,
   error: state.request.error,
   floor: state.request.floor,
+  employees: state.request.employees,
 });
 
 const mapStateToDispatch = (dispatch) => ({
   getFloorList: (payload) => {
     dispatch(getFloorList(payload));
+  },
+  getEmployee: (payload) => {
+    dispatch(getEmployee(payload));
   },
 });
 

@@ -1,7 +1,9 @@
 import * as actions from "./constant";
 import { axiosAuthGet } from "../../modules/Axios";
-import { floorConstant } from "../../modules/config";
+import { floorConstant ,employeeConstant} from "../../modules/config";
 import axios from "axios";
+
+
 export const getFloorList = (id) => async (dispatch) => {
   try {
     dispatch({ type: actions.GET_FLOOR_LIST_INITIATED });
@@ -25,6 +27,30 @@ export const getFloorList = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: actions.GET_FLOOR_LIST_ERROR,
+      error: "Network Error",
+    });
+  }
+};
+
+export const getEmployee = () => async (dispatch) => {
+  try {
+    dispatch({ type: actions.GET_EMPLOYEE_INITIATED });
+    let response = await axiosAuthGet(employeeConstant.GET_EMPLOYEE);
+    if (response.status || response.code === "200") {
+      await dispatch({
+        type: actions.GET_EMPLOYEE_SUCCESS,
+        payload: response,
+      });
+    } else {
+      dispatch({
+        type: actions.GET_EMPLOYEE_ERROR,
+        error: response,
+      });
+    }
+  } catch (error) {
+    console.log(error, "action catch");
+    dispatch({
+      type: actions.GET_EMPLOYEE_ERROR,
       error: "Network Error",
     });
   }
