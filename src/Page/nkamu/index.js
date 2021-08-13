@@ -18,7 +18,7 @@ class Floor extends Component {
       activeKey:["1"],
     };
   }
-  collapseKey = (key) => this.setState({activeKey: key });
+  // collapseKey = (key) => this.setState({activeKey: key });
 
   collapse = () => {
     let array=[];

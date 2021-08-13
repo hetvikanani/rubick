@@ -1,29 +1,39 @@
 import "./App.css";
-
-import Floor from "./Page/Floor/index";
 import "antd/dist/antd.css";
-
 import { Provider } from "react-redux";
 import store from "./Redux/store";
+import SideMenu from "./Components/SideMenu";
 
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
-      <Floor/>
+        <SideMenu/>
       </div>
     </Provider>
   );
 }
 
 export default App;
-
+// import Floor from "./Page/Floor/index";
 // import Request from "./Page/Request/index";
 // import Dashboard from './Page/Dashboard';
 // import Login from './Page/Login/index';
 // import KdEmployee from './Page/KD/index';
+// import DashEmp from "./Page/DashEmp";
 
-{/* <Request /> */}
-  {/* <Login/> */}
-  {/* <Dashboard/> */}
-  {/* <KdEmployee/> */}
+{
+        {/* <DashEmp/> */}
+
+  /* <Request /> */
+}
+{
+  /* <Login/> */
+}
+{
+  /* <Dashboard/> */
+}
+{
+  /* <KdEmployee/> */
+}
+// <Floor/>
