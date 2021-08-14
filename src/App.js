@@ -2,13 +2,15 @@ import "./App.css";
 import "antd/dist/antd.css";
 import { Provider } from "react-redux";
 import store from "./Redux/store";
-import SideMenu from "./Components/SideMenu";
+// import SideMenu from "./Components/SideMenu";
+import  MyLayout from "./Components/Layout/Layout"
 
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <SideMenu/>
+        {/* <SideMenu/> */}
+        <MyLayout/>
       </div>
     </Provider>
   );
