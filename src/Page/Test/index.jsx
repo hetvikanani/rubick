@@ -12,9 +12,14 @@ export default class Test extends Component {
             <MyLayout></MyLayout>
           </Col>
 
-          <Col xs={24} sm={10} md={8} lg={6} xl={5}>
+          <Col xs={24} sm={10} md={16} lg={18} xl={19}>
             <Header></Header>
-            <p>ghfdiygh</p>
+            <div>
+              <p>ghfdiygh</p>
+              <p>ghfdiygh</p> <p>ghfdiygh</p> <p>ghfdiygh</p> <p>ghfdiygh</p>{" "}
+              <p>ghfdiygh</p> <p>ghfdiygh</p> <p>ghfdiygh</p> <p>ghfdiygh</p>{" "}
+              <p>ghfdiygh</p> <p>ghfdiygh</p> <p>ghfdiygh</p> <p>ghfdiygh</p>{" "}
+            </div>
           </Col>
         </Row>
       </div>

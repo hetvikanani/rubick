@@ -15,7 +15,7 @@ const HeaderStyle = styled.div`
   .ant-image-img {
     margin-top: 1rem;
   }
-  .header {           
+  .header {
     color: white;
     margin: 15px;
   }
@@ -23,14 +23,11 @@ const HeaderStyle = styled.div`
     margin-left: -1rem;
   }
 
-
-  // @media screen and (max-width: 400px) {
-    
-  //    .subDiv{
-  //     position: relative;
-  //     top: 0px;
-  //     z-index: 99;
-  //     }      
-  //   }
+  @media screen and (max-width: 400px) {
+    .subDiv {
+      position: fixed;
+      top: 0px;
+    }
+  }
 `;
 export { HeaderStyle };

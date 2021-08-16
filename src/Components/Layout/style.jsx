@@ -10,12 +10,13 @@ const LayoutStyle = styled.div`
     color: white;
     margin: 1px;
     padding-top: 36px;
-    height: 34rem;
+     height: 100vh;
   }
 
   .logo {
     width: 100%;
     padding: 1rem;
+    margin-top:5.5rem;
   }
 
 
@@ -26,14 +27,25 @@ const LayoutStyle = styled.div`
     height: 80px;
   }
 
+
+.ant-layout{
+  height:100vh;
+  background: linear-gradient(354.97deg, #ed3437 -4.39%, #f89c32 123.56%);
+
+
+}
   .ant-layout-sider-children {
     background: linear-gradient(354.97deg, #ed3437 -4.39%, #f89c32 123.56%);
-    width: 15rem;
+    width: 100%;
     margin-top: -51.1px;
     padding-top: 0.1px;
+
   }
-  ant-layout-sider-dark {
-    background: white;
+  .ant-layout-sider-dark {
+    
+    width:100% !important;
+    max-width:100% !important;
+    min-width:100% !important;
   }
 
   .ant-menu {
@@ -70,6 +82,12 @@ border-right: 0px solid #1890ff;
 //    margin-top:3rem;
 // }
 // }
+
+@media screen and (max-width: 400px) {
+  .ant-layout-sider-dark {
+   margin-top:4rem;
+  }
+}
 `;
 export { LayoutStyle };
 // 576px

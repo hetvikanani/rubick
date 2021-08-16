@@ -18,10 +18,10 @@ class MyLayout extends Component {
   render() {
     return (
       <LayoutStyle>
-        <div className="mainDiv" >
+        <div className="mainDiv">
           {/* <Header  xs= {24} sm= {14} md={16} lg= {18} xl={19}/> */}
           <Layout className="layout">
-            <Sider width={200}>
+            <Sider>
               <div className="myCustomLogo">
                 <img src={logo} className="logo"></img>
               </div>
@@ -33,8 +33,8 @@ class MyLayout extends Component {
               >
                 {options.map((data) => (
                   <Menu.Item key={data.key}>
-                    <div >
-                      <i style={{padding:"10px"}} className={data.icon}></i>
+                    <div>
+                      <i style={{ padding: "10px" }} className={data.icon}></i>
                       <span>{data.label}</span>
                     </div>
                   </Menu.Item>
