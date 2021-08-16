@@ -43,14 +43,18 @@ const LayoutStyle = styled.div`
     ) !important;
   }
 
-// .ant-menu-item  {
-//     background-color: rgba(255,255,255,0.28);
-// }
+.ant-menu-item :hover {   
+  color:white;
+    background-color: rgba(255,255,255,0.28); !important
+}
 
- .ant-menu-item ant-menu-item-active ant-menu-item-selected{
-    background-color: rgba(255,255,255,0.28);
-     
- }
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color:rgba(255,255,255,0.28) ;
+  color:white;
+
+}
+
+
 
 `;
 export { LayoutStyle };
