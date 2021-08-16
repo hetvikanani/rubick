@@ -3,14 +3,16 @@ import "antd/dist/antd.css";
 import { Provider } from "react-redux";
 import store from "./Redux/store";
 // import SideMenu from "./Components/SideMenu";
-import  MyLayout from "./Components/Layout/Layout"
+// import  MyLayout from "./Components/Layout/Layout"
+import Test from "./Page/Test"
 
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
         {/* <SideMenu/> */}
-        <MyLayout/>
+        {/* <MyLayout/> */}
+        <Test></Test>
       </div>
     </Provider>
   );

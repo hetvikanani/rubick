@@ -18,6 +18,7 @@ const LayoutStyle = styled.div`
     padding: 1rem;
   }
 
+
   .myCustomLogo {
     display: flex;
     align-items: center;
@@ -54,7 +55,21 @@ const LayoutStyle = styled.div`
 
 }
 
-
-
+.ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after, .ant-menu-inline .ant-menu-item::after {
+border-right: 0px solid #1890ff;
+ }
+ 
+//  @media screen and (max-width: 400){
+//    .ant-layout-sider-children{
+//     z-index: 0;
+//     // width: 16rem;
+//  }
+// }
+//  @media screen and (max-width: 400){
+//   .myCustomLogo{
+//    margin-top:3rem;
+// }
+// }
 `;
 export { LayoutStyle };
+// 576px

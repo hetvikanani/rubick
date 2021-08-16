@@ -10,6 +10,7 @@ import {
   BellOutlined,
   HomeOutlined,
 } from "@ant-design/icons";
+import options from "./Options";
 
 const { Sider } = Layout;
 
@@ -17,8 +18,8 @@ class MyLayout extends Component {
   render() {
     return (
       <LayoutStyle>
-        <div className="mainDiv">
-          <Header />
+        <div className="mainDiv" >
+          {/* <Header  xs= {24} sm= {14} md={16} lg= {18} xl={19}/> */}
           <Layout className="layout">
             <Sider width={200}>
               <div className="myCustomLogo">
@@ -30,7 +31,15 @@ class MyLayout extends Component {
                 defaultOpenKeys={["sub1"]}
                 className="menu"
               >
-                <Menu.Item key="sub1" icon={<HomeOutlined />}>
+                {options.map((data) => (
+                  <Menu.Item key={data.key}>
+                    <div >
+                      <i style={{padding:"10px"}} className={data.icon}></i>
+                      <span>{data.label}</span>
+                    </div>
+                  </Menu.Item>
+                ))}
+                {/* <Menu.Item key="sub1" icon={<A />}>
                   Dashboard
                 </Menu.Item>
                 <Menu.Item key="sub2" icon={<LaptopOutlined />}>
@@ -44,7 +53,7 @@ class MyLayout extends Component {
                 </Menu.Item>
                 <Menu.Item key="sub5" icon={<NotificationOutlined />}>
                   Reports
-                </Menu.Item>
+                </Menu.Item> */}
               </Menu>
             </Sider>
           </Layout>

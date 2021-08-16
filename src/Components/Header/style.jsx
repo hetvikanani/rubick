@@ -15,13 +15,22 @@ const HeaderStyle = styled.div`
   .ant-image-img {
     margin-top: 1rem;
   }
-  .header {
+  .header {           
     color: white;
     margin: 15px;
   }
   .avatar {
     margin-left: -1rem;
   }
- 
+
+
+  // @media screen and (max-width: 400px) {
+    
+  //    .subDiv{
+  //     position: relative;
+  //     top: 0px;
+  //     z-index: 99;
+  //     }      
+  //   }
 `;
 export { HeaderStyle };
