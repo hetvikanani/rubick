@@ -1,24 +1,26 @@
 import styled from "styled-components";
 
 const LayoutStyle = styled.div`
-  .mainDiv {
-    // background: linear-gradient(354.97deg, #ed3437 -4.39%, #f89c32 123.56%);
-  }
+ 
 
   .menu {
     font-weight: bold;
     color: white;
     margin: 1px;
     padding-top: 36px;
-     height: 100vh;
+     height: 120vh;
   }
 
   .logo {
-    width: 100%;
+    width: 88%;
     padding: 1rem;
-    margin-top:5.5rem;
+    padding-top:8rem;
   }
 
+  .ant-layout-sider{
+    background:linear-gradient(354.97deg, #ed3437 -4.39%, #f89c32 123.56%);
+
+  }
 
   .myCustomLogo {
     display: flex;
@@ -27,7 +29,10 @@ const LayoutStyle = styled.div`
     height: 80px;
   }
 
-
+.ant-menu ant-menu-root ant-menu-inline ant-menu-light menu{
+  margin-top: 16%;
+    padding-top: 15px;
+}
 .ant-layout{
   height:100vh;
   background: linear-gradient(354.97deg, #ed3437 -4.39%, #f89c32 123.56%);
@@ -71,23 +76,59 @@ const LayoutStyle = styled.div`
 border-right: 0px solid #1890ff;
  }
  
-//  @media screen and (max-width: 400){
-//    .ant-layout-sider-children{
-//     z-index: 0;
-//     // width: 16rem;
-//  }
-// }
-//  @media screen and (max-width: 400){
-//   .myCustomLogo{
-//    margin-top:3rem;
-// }
-// }
 
-@media screen and (max-width: 400px) {
+
+@media screen and (min-width: 576px) {
   .ant-layout-sider-dark {
    margin-top:4rem;
   }
 }
+
+@media screen and (min-width: 575px) {
+  .logo {
+   width:100%;
+  padding-top:1rem;
+  }
+}
+@media screen and (max-width: 264px) {
+  .logo {
+   width:90%;
+  padding-top:6rem;
+  }
+}
+@media screen and (min-width: 572px) {
+  .menu{
+    height: 95vh;
+  }
+}
+@media screen and (min-width: 600px) {
+  .menu{
+    height: 120vh;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .menu{
+    height: 120vh;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .menu{
+    height: 120vh;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .menu{
+    height: 120vh;
+  }
+}
+@media screen and (min-width: 1330px) {
+  .menu{
+    height: 105vh;
+  }
+}
+
 `;
 export { LayoutStyle };
 // 576px

@@ -23,11 +23,27 @@ const HeaderStyle = styled.div`
     margin-left: -1rem;
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 576px) {
     .subDiv {
       position: fixed;
       top: 0px;
+      
     }
   }
+  
+  @media screen and (max-width: 776px) {
+    .subDiv {
+     width:140%;
+    }
+  }
+
+  @media screen and (max-width: 574px) {
+    .subDiv {
+     width:100%;
+    }
+  }
+
+
+
 `;
 export { HeaderStyle };
