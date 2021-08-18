@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "./logoKd.svg";
+import logo from "../../Images/logoKd.svg";
 import { LayoutStyle } from "./style";
 import Header from "../Header/index";
 import { Layout, Menu } from "antd";

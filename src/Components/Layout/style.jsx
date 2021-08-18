@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import {size} from "../../Components/Responsible";
 const LayoutStyle = styled.div`
  
 
@@ -8,7 +8,7 @@ const LayoutStyle = styled.div`
     color: white;
     margin: 1px;
     padding-top: 36px;
-     height: 120vh;
+     height: 115vh;
   }
 
   .logo {
@@ -76,59 +76,60 @@ const LayoutStyle = styled.div`
 border-right: 0px solid #1890ff;
  }
  
+ @media ${size["desktop-sm-max"]} {
+ 
+    .menu{
+       height: 131vh;
+    }
+  }
 
+@media ${size["tablet-sm-max"]} {
+  .myCustomLogo{
+    padding-top: 100px;
+  }
 
-@media screen and (min-width: 576px) {
-  .ant-layout-sider-dark {
-   margin-top:4rem;
+  .menu{
+    padding-top: 116px;
+    height: 50vh; 
   }
 }
 
-@media screen and (min-width: 575px) {
+
+ @media ${size["mobile-sm-max"]} {
   .logo {
-   width:100%;
-  padding-top:1rem;
-  }
-}
-@media screen and (max-width: 264px) {
-  .logo {
-   width:90%;
-  padding-top:6rem;
-  }
-}
-@media screen and (min-width: 572px) {
-  .menu{
-    height: 95vh;
-  }
-}
-@media screen and (min-width: 600px) {
-  .menu{
-    height: 120vh;
-  }
+    width:90%;
+   padding-top:6rem;
+   }
+   .ant-layout {
+     width:146%;
+   }
+  
 }
 
-@media screen and (min-width: 800px) {
-  .menu{
-    height: 120vh;
-  }
-}
+ 
 
-@media screen and (min-width: 900px) {
-  .menu{
-    height: 120vh;
-  }
-}
-@media screen and (min-width: 1000px) {
-  .menu{
-    height: 120vh;
-  }
-}
-@media screen and (min-width: 1330px) {
-  .menu{
-    height: 105vh;
-  }
-}
+
+
+
+
+
+
+
+
 
 `;
 export { LayoutStyle };
-// 576px
+
+
+// @media screen and (min-width: 575px) {
+//   .logo {
+//    width:100%;
+//   padding-top:1rem;
+//   }
+//   .ant-layout-sider-dark {
+//     margin-top:4rem;
+//    }
+//    .menu{
+//     height: 105vh;
+//   }
+// }

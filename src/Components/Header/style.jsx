@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { size } from "../../Components/Responsible/index";
+
 const HeaderStyle = styled.div`
   .subDiv {
     width: 100%;
@@ -23,26 +25,25 @@ const HeaderStyle = styled.div`
     margin-left: -1rem;
   }
 
-  @media screen and (max-width: 576px) {
-    .subDiv {
-      position: fixed;
-      top: 0px;
-      
-    }
-  }
+ 
+   
   
-  @media screen and (max-width: 776px) {
-    .subDiv {
-     width:140%;
+ 
+ 
+  @media ${size["tablet-max"]} {
+    .subDiv{
+      width:140%;
     }
-  }
 
-  @media screen and (max-width: 574px) {
-    .subDiv {
-     width:100%;
+    @media ${size["tablet-sm-max"]} {
+      .subDiv{
+        z-index:1;
+       width:100%;
+       position: fixed;
+        top: 0px;
+  
+      }
     }
-  }
-
 
 
 `;

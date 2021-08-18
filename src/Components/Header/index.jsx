@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { HeaderStyle } from "./style";
 import { Image, Popover } from "antd";
-import notification from "./notification.svg";
-import avatar from "./avatar.svg";
-import vector from "./Vector.svg";
+import notification from "../../Images/notification.svg";
+import avatar from "../../Images/avatar.svg";
+import vector from "../../Images/Vector.svg";
 
 const content = (
   <div>

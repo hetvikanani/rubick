@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import {size} from "../../Components/Responsible/index"
+
 
 const TestStyle = styled.div`
   .header {
@@ -77,12 +79,38 @@ const TestStyle = styled.div`
     margin: 2rem;
   }
 
-
-
-  @media screen and (max-width: 991px) {
-    .priority{
-        margin-top: -3rem;
+  @media ${size["tablet-max"]} {
+    .priorityCol{
+      margin-left: -9.81rem;
+      margin-top: -1rem;
+    }
+    #form-dropdown{
+      width:120%;
+    }
+    .iGbCGH{
+      width:130%;
     }
   }
+
+  @media ${size["tablet-sm-max"]} {
+    #form-dropdown{
+      width:100%;
+    }
+    .iGbCGH{
+      width:100%;
+    }
+   
+  }
+
+  @media ${size["tablet-md-max"]} {
+    .priority{
+      margin-top: -3rem;
+    }
+  }
+
+  
+
+ 
+ 
 `;
 export { TestStyle };
