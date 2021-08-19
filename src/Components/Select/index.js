@@ -38,10 +38,19 @@ class FormSelect extends Component {
     }
   };
   render() {
-    const { id, onChange, selectClass, defaultValue, className ,placeholder} = this.props;
+    const {
+      id,
+      onChange,
+      selectClass,
+      defaultValue,
+      className,
+      placeholder,
+      value,
+    } = this.props;
     return (
       <SelectContainer id={id ? id : "form-dropdown"} className={className}>
         <Select
+          value={value}
           showSearch
           defaultActiveFirstOption
           showArrow={true}

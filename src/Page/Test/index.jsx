@@ -10,7 +10,6 @@ import * as Yup from "yup";
 import { connect } from "react-redux";
 import { getEmployee, getFloorList } from "../../Redux/Request/action";
 
-
 const ValidationSchema = Yup.object().shape({
   floor: Yup.string().trim().required(" "),
   location: Yup.string().trim().required(" "),
@@ -27,6 +26,7 @@ class Test extends Component {
       storelocation: "",
       myData: [],
       priority: false,
+      resetSelect: true,
 
       initState: {
         floor: "",
@@ -99,7 +99,7 @@ class Test extends Component {
 
   render() {
     const { initState } = this.state;
-    console.log(this.props.floor);
+    console.log(this.props.floor, this.state.myData);
     return (
       <TestStyle>
         <Row>
@@ -144,16 +144,15 @@ class Test extends Component {
                               ? "empty"
                               : "floorSelect"
                           }
-                          value={values.floor}
+                          value={values.floor || null}
                           onChange={(value, data) => {
                             this.setState({ from: value });
                             setFieldValue("floor", value);
-                            setFieldValue("Location", " ");
-
+                            setFieldValue("location", null);
+                            setFieldValue("values", null);
                             this.setState({
                               storefloor: value,
                               floorId: data.id,
-                            
                             });
                           }}
                         />
@@ -178,10 +177,10 @@ class Test extends Component {
                               ? "empty"
                               : "locationSelect"
                           }
-                          value={values.location}
+                          value={values.location || null}
                           onChange={(value, data) => {
                             setFieldValue("location", value);
-                            this.setState({ locationId: data.id});
+                            this.setState({ locationId: data.id });
                           }}
                         />
                       </div>
@@ -194,7 +193,7 @@ class Test extends Component {
                           placeholder="To"
                           className="toSelect"
                           name="employee"
-                          value={values.employee}
+                          value={values.employee || null}
                           onChange={(value, data) => {
                             setFieldValue("employee", value);
                           }}
@@ -212,10 +211,10 @@ class Test extends Component {
                               ? "empty"
                               : "floor1Select"
                           }
-                          value={values.floor1}
+                          value={values.floor1 || null}
                           onChange={(value, data) => {
                             setFieldValue("floor1", value);
-                            setFieldValue("Location1", " ");
+                            setFieldValue("location1", null);
 
                             this.setState({
                               storelocation: value,
@@ -230,9 +229,13 @@ class Test extends Component {
                             this.state.myData.filter(
                               (g) => g.floorname === this.state.storelocation
                             )[0] &&
-                            this.state.myData.filter(
-                              (g) => g.floorname === this.state.storelocation
-                            )[0].locations
+                            this.state.myData
+                              .filter(
+                                (g) => g.floorname === this.state.storelocation
+                              )[0]
+                              .locations.filter(
+                                (final) => final.id !== this.state.locationId
+                              )
                           }
                           placeholder="Location"
                           className="location1Select"
@@ -243,7 +246,7 @@ class Test extends Component {
                               ? "empty"
                               : "location1Select"
                           }
-                          value={values.location1}
+                          value={values.location1 || null}
                           onChange={(value, data) => {
                             setFieldValue("location1", value);
                             this.setState({ location1Id: data.id });
