@@ -83,7 +83,7 @@ class Test extends Component {
       "destination location is",
       value.location1
     );
-
+      
     console.log(
       "checkbox is:",
       this.state.priority,
@@ -148,7 +148,7 @@ class Test extends Component {
                           onChange={(value, data) => {
                             this.setState({ from: value });
                             setFieldValue("floor", value);
-                            setFieldValue("location", null);
+                            setFieldValue("location", null);  
                             setFieldValue("values", null);
                             this.setState({
                               storefloor: value,
@@ -180,6 +180,8 @@ class Test extends Component {
                           value={values.location || null}
                           onChange={(value, data) => {
                             setFieldValue("location", value);
+                            setFieldValue("location1", "");
+
                             this.setState({ locationId: data.id });
                           }}
                         />

@@ -4,7 +4,9 @@ import { Provider } from "react-redux";
 import store from "./Redux/store";
 // import SideMenu from "./Components/SideMenu";
 // import  MyLayout from "./Components/Layout/Layout"
-import Test from "./Page/Test"
+// import Test from "./Page/Test"
+// import AcceptMob from "./Page/Accept_Mobile";
+import Farm from "./Page/Farm/index";
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
       <div className="App">
         {/* <SideMenu/> */}
         {/* <MyLayout/> */}
-        <Test></Test>
+        {/* <Test></Test> */}
+        {/* <AcceptMob/> */}
+        <Farm/>
       </div>
     </Provider>
   );

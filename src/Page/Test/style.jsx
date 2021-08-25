@@ -108,9 +108,5 @@ const TestStyle = styled.div`
     }
   }
 
-  
-
- 
- 
 `;
 export { TestStyle };
